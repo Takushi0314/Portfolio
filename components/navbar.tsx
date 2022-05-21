@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
   Link,
   IconButton,
@@ -14,12 +13,14 @@ import {
   MenuDivider,
   useDisclosure,
   useColorModeValue,
+  useColorMode,
   Stack,
+  Spacer,
   Image
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 
-const Links = ["About", "Works", "Profile"];
+const Links = ["Works", "Skills", "Profile"];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
@@ -37,12 +38,13 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 );
 
 export default function Navbar() {
+  const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+        <Flex h={16} alignItems={"center"} justifyContent={"center"}>
           <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -64,6 +66,12 @@ export default function Navbar() {
               ))}
             </HStack>
           </HStack>
+          <Spacer />
+          <Stack direction={"row"}>
+            <Button onClick={toggleColorMode}>
+              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+            </Button>
+          </Stack>
           <Flex alignItems={"center"}>
             <Menu>
               <MenuButton
@@ -72,14 +80,7 @@ export default function Navbar() {
                 variant={"link"}
                 cursor={"pointer"}
                 minW={0}
-              >
-                <Avatar
-                  size={"sm"}
-                  src={
-                    "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                  }
-                />
-              </MenuButton>
+              ></MenuButton>
               <MenuList>
                 <MenuItem>Link 1</MenuItem>
                 <MenuItem>Link 2</MenuItem>
