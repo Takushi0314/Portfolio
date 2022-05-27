@@ -1,4 +1,4 @@
-import { Flex, Box } from "@chakra-ui/react";
+import { SimpleGrid, Box } from "@chakra-ui/react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
@@ -12,14 +12,42 @@ export default function Skills() {
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>スキルセット</h1>
-        <Flex w="100%">
-          <Box bg="tomato" w="50%">
-            <p>aa</p>
+        <div className={styles.description}>
+          業務や趣味で使用したことのあるスキルを記載しています
+          本業はSIerでバッグエンド系を主に担当しております。
+          強みとしては、フロントエンドからバックエンドで広く見ることができます。
+          現在、クラウドサービス（AWSやAzure、GCP）に関して勉強中です。
+        </div>
+        <SimpleGrid columns={3} spacing={10} w="100%">
+          <Box>
+            <p>フロントエンド</p>
+            <p>Angular</p>
+            <p>React(Next.js)</p>
+            <p>jQuery</p>
+            <p>Bootstrap</p>
+            <p>WordPress</p>
           </Box>
-          <Box bg="blue" w="50%">
-            <p>vbb</p>
+          <Box>
+            <p>バックエンド</p>
+            <p>Ruby on Rails</p>
+            <p>Spring Framework</p>
+            <p>Django</p>
+            <p>Oracle</p>
+            <p>MySQL</p>
+            <p>PostgreSQL</p>
           </Box>
-        </Flex>
+          <Box>
+            <p>ツール</p>
+            <p>Docker</p>
+            <p>vim</p>
+            <p>Git / Github</p>
+            <p>Ubuntu / CentOS(Linux)</p>
+            <p>VMWare / VirtualBox</p>
+            <p>Jenkins</p>
+            <p>nginx / apache</p>
+            <p>tomcat</p>
+          </Box>
+        </SimpleGrid>
       </main>
     </div>
   );
